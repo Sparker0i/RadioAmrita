@@ -1,20 +1,14 @@
-package com.example.root.radio;
+package in.ac.amrita.radioamrita;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     boolean started = false;
     boolean prepared = false;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

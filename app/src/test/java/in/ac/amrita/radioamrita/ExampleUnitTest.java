@@ -1,4 +1,4 @@
-package com.example.root.radio;
+package in.ac.amrita.radioamrita;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.root.radio;
+package in.ac.amrita.radioamrita;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
