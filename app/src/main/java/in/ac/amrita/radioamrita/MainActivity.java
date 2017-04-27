@@ -16,31 +16,26 @@ import in.ac.amrita.radioamrita.utils.Constants;
 public class MainActivity extends AppCompatActivity {
 
     Button play;
-    MediaPlayer mediaPlayer;
     boolean started = false;
-    boolean prepared = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        play = (Button) findViewById(R.id.play);
-        play.setEnabled(false);
-        play.setText(getString(R.string.loading));
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        final MC global = (MC) getApplicationContext();
+        play = (Button) findViewById(R.id.button);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (started) {
-                    mediaPlayer.pause();
+                    global.pause();
                     started = false;
                     play.setText(getString(R.string.play));
                 } else {
-                    mediaPlayer.start();
+                    global.start();
                     started = true;
                     play.setText(getString(R.string.pause));
                 }
@@ -48,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new PlayTask().execute(Constants.STREAM_URL);
+
     }
 
     @Override
@@ -80,25 +75,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class PlayTask extends AsyncTask<String, Void, Boolean> {
 
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            try {
-                mediaPlayer.setDataSource(strings[0]);
-                mediaPlayer.prepare();
-                prepared = true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return prepared;
-        }
 
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            play.setEnabled(true);
-            play.setText(getString(R.string.play));
-        }
+
     }
-}
+
+
+
+
+
