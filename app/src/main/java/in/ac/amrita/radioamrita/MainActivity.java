@@ -1,5 +1,6 @@
 package in.ac.amrita.radioamrita;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -10,10 +11,10 @@ import android.widget.Button;
 
 import java.io.IOException;
 
+import in.ac.amrita.radioamrita.utils.Constants;
+
 public class MainActivity extends AppCompatActivity {
 
-
-    private final static String stream = "http://192.168.0.160:8000/;";
     Button play;
     MediaPlayer mediaPlayer;
     boolean started = false;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         play = (Button) findViewById(R.id.button);
         play.setEnabled(false);
-        play.setText("Loading..");
+        play.setText(getString(R.string.loading));
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
@@ -37,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
                 if (started) {
                     mediaPlayer.pause();
                     started = false;
-                    play.setText("Play");
+                    play.setText(getString(R.string.play));
                 } else {
                     mediaPlayer.start();
                     started = true;
-                    play.setText("Pause");
+                    play.setText(getString(R.string.pause));
                 }
 
             }
         });
 
-        new PlayTask().execute(stream);
+        new PlayTask().execute(Constants.STREAM_URL);
     }
 
     @Override
@@ -71,15 +72,18 @@ public class MainActivity extends AppCompatActivity {
         // mediaPlayer.release();
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
     private class PlayTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(String... strings) {
-
             try {
                 mediaPlayer.setDataSource(strings[0]);
                 mediaPlayer.prepare();
@@ -94,14 +98,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             play.setEnabled(true);
-            play.setText("Play");
-
+            play.setText(getString(R.string.play));
         }
     }
-
-    }
-
-
-
-
-
+}
