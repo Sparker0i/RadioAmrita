@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 
 public class MainActivity extends AppCompatActivity {
 
     Button play;
+    Chronometer chronometer;
     boolean started = false;
 
     @Override
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         final MC global = (MC) getApplicationContext();
         play = (Button) findViewById(R.id.play);
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,10 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (started) {
                     global.pause();
+                    chronometer.stop();
                     started = false;
                     play.setText(getString(R.string.play));
                 } else {
                     global.start();
+                    chronometer.start();
                     started = true;
                     play.setText(getString(R.string.pause));
                 }
