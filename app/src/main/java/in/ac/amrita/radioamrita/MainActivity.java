@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        play = (Button) findViewById(R.id.button);
+        play = (Button) findViewById(R.id.play);
         play.setEnabled(false);
         play.setText(getString(R.string.loading));
         mediaPlayer = new MediaPlayer();
