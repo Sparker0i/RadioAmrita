@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical"
+<RelativeLayout
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#c3131e"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto" >
 
     <FrameLayout
         android:id="@+id/album_art"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="90.0dip">
 
         <android.support.v7.widget.CardView
             android:layout_gravity="center|top"
             android:clipToPadding="true"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="4.0dip"
-            card_view:cardBackgroundColor="#ff313536"
+            card_view:cardBackgroundColor="#c3131e"
             card_view:cardCornerRadius="8.0dip"
-            card_view:cardElevation="12.0dip"
+            card_view:cardElevation="0.0dip"
             card_view:cardUseCompatPadding="true">
 
             <FrameLayout
@@ -44,6 +45,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#c3131e"
         card_view:cardElevation="12.0dip">
 
         <TableRow

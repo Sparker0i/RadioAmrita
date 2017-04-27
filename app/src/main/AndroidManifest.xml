@@ -18,7 +18,6 @@
         </activity>
         <activity
             android:name=".SplashScreen"
-            android:label="@string/title_activity_splash_screen"
             android:theme="@style/FullscreenTheme">
 
             <intent-filter>
