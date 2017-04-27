@@ -23,49 +23,13 @@ import java.io.IOException;
  */
 public class SplashScreen extends AppCompatActivity {
 
-MediaPlayer mediaPlayer = new MediaPlayer();
-    boolean prepared = false;
-    private final static String stream = "http://192.168.0.160:8000/;";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        MC global = (MC) getApplicationContext();
+        global.init();
 
-        new Task().execute(stream);
-
-
-
-
-
-    }
-
-    class Task extends AsyncTask<String, Void, Boolean> {
-
-        @Override
-        protected Boolean doInBackground(String... strings) {
-
-            try {
-                ProgressBar progress = (ProgressBar) findViewById(R.id.progressBar);
-
-                mediaPlayer.setDataSource(strings[0]);
-                mediaPlayer.prepare();
-                prepared = true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return prepared;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-            SplashScreen.this.startActivity(intent);
-
-        }
     }
 
 }
