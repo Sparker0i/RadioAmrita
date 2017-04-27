@@ -1,7 +1,5 @@
 package in.ac.amrita.radioamrita;
 
-import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,8 +11,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         MC global = (MC) getApplicationContext();
         global.init();
-
     }
-
 }
 

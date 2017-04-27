@@ -1,17 +1,10 @@
 package in.ac.amrita.radioamrita;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.IOException;
-
-import in.ac.amrita.radioamrita.utils.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final MC global = (MC) getApplicationContext();
-        play = (Button) findViewById(R.id.button);
+        play = (Button) findViewById(R.id.play);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
