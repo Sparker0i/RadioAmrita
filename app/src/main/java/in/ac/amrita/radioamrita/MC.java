@@ -8,13 +8,14 @@ import android.os.AsyncTask;
 
 import java.io.IOException;
 
+import in.ac.amrita.radioamrita.utils.Constants;
+
 public class MC extends Application {
     MediaPlayer mediaPlayer = new MediaPlayer();
     boolean prepared = false;
-    private final static String stream = "http://192.168.0.160:8000/;";
 
     public void init(){
-        new Task().execute(stream);
+        new Task().execute(Constants.STREAM_URL);
     }
 
     public void start()
