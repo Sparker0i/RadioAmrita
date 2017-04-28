@@ -11,7 +11,6 @@ import android.widget.Chronometer;
 public class MainActivity extends AppCompatActivity {
 
     Button play;
-    Chronometer chronometer;
     boolean started = false;
     Chronometer mChronometer;
     long mLastStopTime=0;
@@ -22,13 +21,16 @@ public class MainActivity extends AppCompatActivity {
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
         final MC global = (MC) getApplicationContext();
         play = (Button) findViewById(R.id.play);
+        global.start();
+        chronoStart();
+        started = true;
+        play.setText(getString(R.string.pause));
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (started) {
                     global.pause();
-                    chronometer.stop();
                     started = false;
                     chronoPause();
                     play.setText(getString(R.string.play));
