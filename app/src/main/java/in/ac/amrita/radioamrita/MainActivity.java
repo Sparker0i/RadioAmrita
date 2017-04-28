@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
         final MC global = (MC) getApplicationContext();
         play = (Button) findViewById(R.id.play);
+        global.start();
+        chronoStart();
+        started = true;
+        play.setText(getString(R.string.pause));
         play.setOnClickListener(new View.OnClickListener() {
 
             @Override
