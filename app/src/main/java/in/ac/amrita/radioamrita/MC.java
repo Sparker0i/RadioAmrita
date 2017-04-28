@@ -7,6 +7,9 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import in.ac.amrita.radioamrita.utils.Constants;
 
@@ -14,8 +17,8 @@ public class MC extends Application {
     MediaPlayer mediaPlayer = new MediaPlayer();
     boolean prepared = false;
 
-    public void init(){
-        new Task().execute(Constants.STREAM_URL);
+    public void init() throws InterruptedException , ExecutionException , TimeoutException {
+        new Task().execute(Constants.STREAM_URL).get(10 , TimeUnit.SECONDS);
     }
 
     public void start()
