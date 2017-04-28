@@ -1,4 +1,4 @@
-package in.ac.amrita.radioamrita;
+package in.ac.amrita.radioamrita.activity;
 
 import android.content.Context;
 import android.os.Handler;
@@ -11,6 +11,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
+
+import in.ac.amrita.radioamrita.app.MC;
+import in.ac.amrita.radioamrita.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -28,9 +31,9 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 catch (TimeoutException tex) {
                     new MaterialDialog.Builder(context)
-                            .title("Check Internet Connection")
-                            .content("Please check whether you are connected to AMRITA Networks or not, and then restart the app")
-                            .positiveText("OK")
+                            .title(getString(R.string.check_connection))
+                            .content(getString(R.string.check_connection_content))
+                            .positiveText(getString(R.string.ok))
                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {

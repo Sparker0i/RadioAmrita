@@ -1,4 +1,4 @@
-package in.ac.amrita.radioamrita;
+package in.ac.amrita.radioamrita.app;
 
 import android.app.Application;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import in.ac.amrita.radioamrita.activity.MainActivity;
 import in.ac.amrita.radioamrita.utils.Constants;
 
 public class MC extends Application {
@@ -18,7 +19,7 @@ public class MC extends Application {
     boolean prepared = false;
 
     public void init() throws InterruptedException , ExecutionException , TimeoutException {
-        new Task().execute(Constants.STREAM_URL).get(10 , TimeUnit.SECONDS);
+        new Task().execute(Constants.STREAM_URL).get(5 , TimeUnit.SECONDS);
     }
 
     public void start()

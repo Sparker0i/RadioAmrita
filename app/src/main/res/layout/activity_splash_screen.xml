@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c3131e"
-    tools:context="in.ac.amrita.radioamrita.SplashScreen">
+    tools:context="in.ac.amrita.radioamrita.activity.SplashScreen">
 
     <ProgressBar
         android:id="@+id/progressBar"

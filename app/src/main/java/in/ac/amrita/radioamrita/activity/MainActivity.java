@@ -1,4 +1,4 @@
-package in.ac.amrita.radioamrita;
+package in.ac.amrita.radioamrita.activity;
 
 import android.content.Intent;
 import android.os.SystemClock;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+
+import in.ac.amrita.radioamrita.app.MC;
+import in.ac.amrita.radioamrita.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // on first start
         if ( mLastStopTime == 0 )
             mChronometer.setBase( SystemClock.elapsedRealtime() );
-            // on resume after pause
+        // on resume after pause
         else
         {
             long intervalOnPause = (SystemClock.elapsedRealtime() - mLastStopTime);
@@ -69,22 +72,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-       /* if(started)
-            mediaPlayer.pause();*/
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        /*if(started)
-            mediaPlayer.start();*/
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // mediaPlayer.release();
     }
 
     @Override
