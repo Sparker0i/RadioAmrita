@@ -11,10 +11,10 @@ import android.widget.Chronometer;
 public class MainActivity extends AppCompatActivity {
 
     Button play;
-    Chronometer chronometer;
     boolean started = false;
     Chronometer mChronometer;
     long mLastStopTime=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +23,11 @@ public class MainActivity extends AppCompatActivity {
         final MC global = (MC) getApplicationContext();
         play = (Button) findViewById(R.id.play);
         play.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-
                 if (started) {
                     global.pause();
-                    chronometer.stop();
                     started = false;
                     chronoPause();
                     play.setText(getString(R.string.play));
@@ -38,13 +37,8 @@ public class MainActivity extends AppCompatActivity {
                     started = true;
                     play.setText(getString(R.string.pause));
                 }
-
             }
         });
-
-
-
-
     }
 
     private void chronoStart()
@@ -58,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
             long intervalOnPause = (SystemClock.elapsedRealtime() - mLastStopTime);
             mChronometer.setBase( mChronometer.getBase() + intervalOnPause );
         }
-
         mChronometer.start();
     }
 
     private void chronoPause()
     {
         mChronometer.stop();
-
         mLastStopTime = SystemClock.elapsedRealtime();
     }
 
@@ -98,11 +90,7 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
-
-
-
-    }
+}
 
 
 

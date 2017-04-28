@@ -3,6 +3,10 @@ package in.ac.amrita.radioamrita;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.sql.Time;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -10,7 +14,12 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         MC global = (MC) getApplicationContext();
-        global.init();
+        try {
+            global.init();
+        }
+        catch (InterruptedException | ExecutionException | TimeoutException ex) {
+
+        }
     }
 }
 
