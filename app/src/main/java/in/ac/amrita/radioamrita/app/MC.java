@@ -14,6 +14,8 @@ import java.util.concurrent.TimeoutException;
 import in.ac.amrita.radioamrita.activity.MainActivity;
 import in.ac.amrita.radioamrita.utils.Constants;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class MC extends Application {
     MediaPlayer mediaPlayer = new MediaPlayer();
     boolean prepared = false;
@@ -38,6 +40,7 @@ public class MC extends Application {
         protected Boolean doInBackground(String... strings) {
 
             try {
+                System.out.println("URL : " + strings[0]);
                 mediaPlayer.setDataSource(strings[0]);
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mediaPlayer.prepare();
@@ -53,6 +56,7 @@ public class MC extends Application {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             Intent intent = new Intent(MC.this, MainActivity.class);
+            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
             MC.this.startActivity(intent);
         }
     }
