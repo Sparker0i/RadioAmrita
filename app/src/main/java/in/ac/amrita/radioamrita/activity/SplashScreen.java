@@ -2,6 +2,8 @@ package in.ac.amrita.radioamrita.activity;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,13 +25,16 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         final MC global = (MC) getApplicationContext();
         final Context context = this;
-        new Handler().postDelayed(new Runnable() {
+        HandlerThread handlerThread = new HandlerThread("background-handler");
+        handlerThread.start();
+        Looper looper = handlerThread.getLooper();
+
+        new Handler(looper).postDelayed(new Runnable() {
             @Override
             public void run() {
                 try {
                     global.init();
-                }
-                catch (TimeoutException tex) {
+                } catch (TimeoutException tex) {
                     new MaterialDialog.Builder(context)
                             .title(getString(R.string.check_connection))
                             .content(getString(R.string.check_connection_content))
@@ -42,12 +47,11 @@ public class SplashScreen extends AppCompatActivity {
                                 }
                             })
                             .show();
-                }
-                catch (InterruptedException | ExecutionException ex) {
+                } catch (InterruptedException | ExecutionException ex) {
                     ex.printStackTrace();
                 }
             }
-        } , 500);
+        } , 1000);
     }
 }
 

@@ -38,7 +38,6 @@ public class MC extends Application {
 
         @Override
         protected Boolean doInBackground(String... strings) {
-
             try {
                 System.out.println("URL : " + strings[0]);
                 mediaPlayer.setDataSource(strings[0]);
