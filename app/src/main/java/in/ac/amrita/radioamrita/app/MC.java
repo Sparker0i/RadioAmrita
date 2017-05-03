@@ -21,7 +21,7 @@ public class MC extends Application {
     boolean prepared = false;
 
     public void init() throws InterruptedException , ExecutionException , TimeoutException {
-        new Task().execute(Constants.STREAM_URL).get(5 , TimeUnit.SECONDS);
+        new Task().execute(Constants.STREAM_URL).get(15 , TimeUnit.SECONDS);
     }
 
     public void start()
